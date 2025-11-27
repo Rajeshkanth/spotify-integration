@@ -15,7 +15,7 @@ app.get("/login", (req, res) => {
     `https://accounts.spotify.com/authorize?response_type=code` +
     `&client_id=${clientId}` +
     `&scope=${encodeURIComponent(scope)}` +
-    `&redirect_uri=${encodeURIComponent(redirectUri)}`;
+    `&redirect_uri=${redirectUri}`;
 
   res.redirect(url);
 });

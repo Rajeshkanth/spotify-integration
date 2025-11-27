@@ -24,7 +24,7 @@ app.get("/callback", async (req, res) => {
   const code = req.query.code;
 
   const basic = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
-console.log("redirect uri: ", redirectUri);
+console.log("redirect uri: ", decodeURIComponent(redirectUri));
 
   const tokenResponse = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -35,7 +35,7 @@ console.log("redirect uri: ", redirectUri);
     body: new URLSearchParams({
       grant_type: "authorization_code",
       code,
-      redirect_uri: redirectUri,
+      redirect_uri: decodeURIComponent(redirectUri),
     }),
   });
 

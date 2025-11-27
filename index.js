@@ -40,6 +40,9 @@ app.get("/callback", async (req, res) => {
 
   const data = await tokenResponse.json();
 
+  console.log(data);
+  
+
   console.log("Access Token: ", data.access_token);
   console.log("Refresh Token: ", data.refreh_token);
 

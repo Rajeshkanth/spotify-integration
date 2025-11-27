@@ -15,7 +15,7 @@ app.get("/login", (req, res) => {
     `https://accounts.spotify.com/authorize?response_type=code` +
     `&client_id=${clientId}` +
     `&scope=${encodeURIComponent(scope)}` +
-    `&redirect_uri=${redirectUri}`;
+    `&redirect_uri=${encodeURIComponent(redirectUri)}`;
 
   res.redirect(url);
 });
@@ -24,6 +24,7 @@ app.get("/callback", async (req, res) => {
   const code = req.query.code;
 
   const basic = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+console.log("redirect uri: ", redirectUri);
 
   const tokenResponse = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -44,7 +45,7 @@ app.get("/callback", async (req, res) => {
   
 
   console.log("Access Token: ", data.access_token);
-  console.log("Refresh Token: ", data.refreh_token);
+  console.log("Refresh Token: ", data.refresh_token);
 
   res.send("Tokens Obtained!");
 });
@@ -60,7 +61,7 @@ const getAccessToken = async () => {
     },
     body: new URLSearchParams({
       grant_type: "refresh_token",
-      refreh_token: process.env.SPOTIFY_REFRESH_TOKEN,
+      refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
     }),
   });
 

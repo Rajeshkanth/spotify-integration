@@ -102,6 +102,7 @@ app.get("/now-playing", async (req, res) => {
       album: item.album.name,
       albumImageUrl: item.album.images[0]?.url,
       songUrl: item.external_urls.spotify,
+      trackId: item.id,
     });
   } catch (err) {
     console.error(err);

@@ -71,7 +71,7 @@ const getAccessToken = async () => {
 
 app.get("/now-playing", async (req, res) => {
   try {
-    const { access_token } = await getAccessToken();
+    const access_token = await getAccessToken();
 
     const response = await fetch(
       "https://api.spotify.com/v1/me/player/currently-playing",

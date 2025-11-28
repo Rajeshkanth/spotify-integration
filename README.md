@@ -1,5 +1,3 @@
-﻿# spotify-integration
-
  ## 🎧 Spotify Backend Integration
 
 This repository contains a Node.js-based backend service that integrates with the Spotify Web API to fetch real-time playback information from a user's account.
@@ -37,6 +35,7 @@ Built specifically to showcase real-time Spotify integration in a developer port
 - Frontend + backend integration
 
 ---
+
 
 
 
